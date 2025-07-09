@@ -1,3 +1,5 @@
+import ErrorComponent from "@/components/error-component";
+import NotFoundComponent from "@/components/not-found-component";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -23,4 +25,6 @@ export const Route = createRootRoute({
       </div>
     </ThemeProvider>
   ),
+  notFoundComponent: NotFoundComponent,
+  errorComponent: ErrorComponent,
 });

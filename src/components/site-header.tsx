@@ -5,38 +5,72 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { ModeToggle } from "@/components/mode-toggle";
+import { cn } from "@/lib/utils";
+import * as React from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItems = [
+  const services = [
     {
-      name: "Services",
-      hasDropdown: true,
-      items: [
-        "Custom Software",
-        "Business Automation",
-        "Web Development",
-        "Mobile Apps",
-      ],
+      title: "Custom Software",
+      href: "/services/custom-software",
+      description: "Tailored applications for your business needs",
     },
     {
-      name: "Solutions",
-      hasDropdown: true,
-      items: [
-        "Digital Transformation",
-        "E-commerce",
-        "SaaS Development",
-        "API Integration",
-      ],
+      title: "Web Development",
+      href: "/services/web-development",
+      description: "Modern, responsive web applications",
     },
-    { name: "Portfolio", hasDropdown: false },
-    { name: "About", hasDropdown: false },
-    { name: "Contact", hasDropdown: false },
+    {
+      title: "Mobile Apps",
+      href: "/services/mobile-apps",
+      description: "Native and cross-platform solutions",
+    },
+    {
+      title: "API Development",
+      href: "/services/api-development",
+      description: "Scalable backend services and APIs",
+    },
+    {
+      title: "DevOps & Cloud",
+      href: "/services/devops-cloud",
+      description: "Infrastructure and deployment solutions",
+    },
+    {
+      title: "Consulting",
+      href: "/services/consulting",
+      description: "Strategic technology guidance",
+    },
+  ];
+
+  const resources = [
+    {
+      title: "Case Studies",
+      href: "/case-studies",
+      description: "Success stories from our clients",
+    },
+    {
+      title: "Blog",
+      href: "/blog",
+      description: "Latest insights and tech articles",
+    },
+    {
+      title: "Documentation",
+      href: "/docs",
+      description: "Technical guides and best practices",
+    },
+    {
+      title: "Developer Portal",
+      href: "/developers",
+      description: "Tools and resources for developers",
+    },
   ];
 
   return (
@@ -56,57 +90,93 @@ const Header = () => {
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
-              {navItems.map((item) => (
-                <NavigationMenuItem key={item.name}>
-                  {item.hasDropdown ? (
-                    <>
-                      <NavigationMenuTrigger className="h-10 px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
-                        {item.name}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent>
-                        <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                          {item.items?.map((subItem) => (
-                            <a
-                              key={subItem}
-                              href="#"
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                            >
-                              <div className="text-sm font-medium leading-none">
-                                {subItem}
-                              </div>
-                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                {subItem === "Custom Software" &&
-                                  "Tailored solutions for your unique business needs"}
-                                {subItem === "Business Automation" &&
-                                  "Streamline operations and increase efficiency"}
-                                {subItem === "Web Development" &&
-                                  "Modern, responsive websites and web applications"}
-                                {subItem === "Mobile Apps" &&
-                                  "Native and cross-platform mobile solutions"}
-                                {subItem === "Digital Transformation" &&
-                                  "Modernize your business with digital solutions"}
-                                {subItem === "E-commerce" &&
-                                  "Complete online stores and marketplace solutions"}
-                                {subItem === "SaaS Development" &&
-                                  "Cloud-based software as a service platforms"}
-                                {subItem === "API Integration" &&
-                                  "Connect and synchronize your business systems"}
-                              </p>
-                            </a>
-                          ))}
-                        </div>
-                      </NavigationMenuContent>
-                    </>
-                  ) : (
-                    <a
-                      href="#"
-                      className="h-10 px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 inline-flex items-center justify-center rounded-md"
-                    >
-                      {item.name}
-                    </a>
-                  )}
-                </NavigationMenuItem>
-              ))}
+              {/* Product */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Product</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] justify-start text-start">
+                    <li className="row-span-3">
+                      <NavigationMenuLink asChild>
+                        <a
+                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                          href="/product"
+                        >
+                          <div className="mb-2 mt-4 text-lg font-medium">
+                            Lattice Platform
+                          </div>
+                          <p className="text-sm leading-tight text-muted-foreground">
+                            Complete development platform with project
+                            management, CI/CD, and analytics.
+                          </p>
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <ListItem href="/product/features" title="Features">
+                      Project management, code repository, and CI/CD pipeline.
+                    </ListItem>
+                    <ListItem href="/product/changelog" title="Changelog">
+                      Latest platform updates and feature releases.
+                    </ListItem>
+                    <ListItem href="/product/roadmap" title="Roadmap">
+                      See what we're building next for the platform.
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Services */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Services</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] justify-start text-start">
+                    {services.map((service) => (
+                      <ListItem
+                        key={service.title}
+                        title={service.title}
+                        href={service.href}
+                      >
+                        {service.description}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Resources */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] justify-start text-start">
+                    {resources.map((resource) => (
+                      <ListItem
+                        key={resource.title}
+                        title={resource.title}
+                        href={resource.href}
+                      >
+                        {resource.description}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Simple Links */}
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle()}
+                >
+                  <a href="/about">About</a>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle()}
+                >
+                  <a href="/pricing">Pricing</a>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -114,10 +184,16 @@ const Header = () => {
         {/* Desktop CTA Buttons */}
         <div className="hidden md:flex items-center space-x-3">
           <ModeToggle />
-          <Button variant="ghost" size="sm">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-muted-foreground hover:text-foreground"
+          >
+            Client Portal
+          </Button>
+          <Button size="sm" className="bg-primary hover:bg-primary/90">
             Get Quote
           </Button>
-          <Button size="sm">Start Project</Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -141,39 +217,60 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur">
           <div className="container px-4 py-4 space-y-3">
-            {navItems.map((item) => (
-              <div key={item.name} className="space-y-2">
+            <a
+              href="/product"
+              className="block text-sm font-medium hover:text-primary transition-colors"
+            >
+              Product
+            </a>
+            <div className="pl-4 space-y-2">
+              <a
+                href="/services"
+                className="block text-sm font-medium hover:text-primary transition-colors"
+              >
+                Services
+              </a>
+              {services.slice(0, 3).map((service) => (
                 <a
-                  href="#"
-                  className="block text-sm font-medium hover:text-primary transition-colors"
+                  key={service.title}
+                  href={service.href}
+                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors pl-2"
                 >
-                  {item.name}
+                  {service.title}
                 </a>
-                {item.hasDropdown && item.items && (
-                  <div className="pl-4 space-y-2">
-                    {item.items.map((subItem) => (
-                      <a
-                        key={subItem}
-                        href="#"
-                        className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        {subItem}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
+            <a
+              href="/resources"
+              className="block text-sm font-medium hover:text-primary transition-colors"
+            >
+              Resources
+            </a>
+            <a
+              href="/about"
+              className="block text-sm font-medium hover:text-primary transition-colors"
+            >
+              About
+            </a>
+            <a
+              href="/pricing"
+              className="block text-sm font-medium hover:text-primary transition-colors"
+            >
+              Pricing
+            </a>
             <div className="pt-4 border-t border-border space-y-3">
               <Button
                 variant="ghost"
                 size="sm"
-                className="w-full justify-start"
+                className="w-full justify-start text-muted-foreground hover:text-foreground"
+              >
+                Client Portal
+              </Button>
+              <Button
+                size="sm"
+                className="w-full bg-primary hover:bg-primary/90"
               >
                 Get Quote
-              </Button>
-              <Button size="sm" className="w-full">
-                Start Project
               </Button>
             </div>
           </div>
@@ -182,5 +279,31 @@ const Header = () => {
     </header>
   );
 };
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a"> & { title: string }
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
 
 export default Header;
