@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logoSvg from "/logo.svg";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -27,18 +28,14 @@ const Header = () => {
     mainNav.find((item) => item.title === "Resources")?.items || [];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center">
-      <div className="container flex h-16 max-w-screen-xl items-center justify-between px-4">
-        <div className="flex items-center space-x-4">
+    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center border-b border-border">
+      <div className="container flex h-16 max-w-screen-2xl items-center justify-between ">
+        <div className="flex items-center space-x-8 w-full">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">
-                S
-              </span>
-            </div>
-            <span className="text-xl font-bold tracking-tight">
-              {siteConfig.name}
+            <img src={logoSvg} alt={siteConfig.name} className="h-8 w-8" />
+            <span className="text-lg font-bold tracking-tight font-glancyr">
+              {siteConfig.name.toUpperCase()}
             </span>
           </div>
 
@@ -147,11 +144,11 @@ const Header = () => {
         <div className="hidden md:flex items-center space-x-3">
           <ModeToggle />
           <Button
-            variant="ghost"
+            variant="secondary"
             size="sm"
             className="text-muted-foreground hover:text-foreground"
           >
-            Client Portal
+            Dashboard
           </Button>
           <Button size="sm" className="bg-primary hover:bg-primary/90">
             Get Quote
