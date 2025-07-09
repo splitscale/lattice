@@ -8,9 +8,14 @@ import { tanstackRouter } from "@tanstack/router-plugin/vite";
 export default defineConfig({
   plugins: [
     // Please make sure that '@tanstack/router-plugin' is passed before '@vitejs/plugin-react'
+    // TanStack Router Plugin with Vite for File-based routing
     tanstackRouter({
       target: "react",
       autoCodeSplitting: true,
+      routesDirectory: "./src/routes",
+      generatedRouteTree: "./src/routeTree.gen.ts",
+      routeFileIgnorePrefix: "-",
+      quoteStyle: "single",
     }),
     react(),
     tailwindcss(),
