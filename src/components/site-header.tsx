@@ -8,70 +8,23 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { ModeToggle } from "@/components/mode-toggle";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/config";
 import * as React from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const services = [
-    {
-      title: "Custom Software",
-      href: "/services/custom-software",
-      description: "Tailored applications for your business needs",
-    },
-    {
-      title: "Web Development",
-      href: "/services/web-development",
-      description: "Modern, responsive web applications",
-    },
-    {
-      title: "Mobile Apps",
-      href: "/services/mobile-apps",
-      description: "Native and cross-platform solutions",
-    },
-    {
-      title: "API Development",
-      href: "/services/api-development",
-      description: "Scalable backend services and APIs",
-    },
-    {
-      title: "DevOps & Cloud",
-      href: "/services/devops-cloud",
-      description: "Infrastructure and deployment solutions",
-    },
-    {
-      title: "Consulting",
-      href: "/services/consulting",
-      description: "Strategic technology guidance",
-    },
-  ];
-
-  const resources = [
-    {
-      title: "Case Studies",
-      href: "/case-studies",
-      description: "Success stories from our clients",
-    },
-    {
-      title: "Blog",
-      href: "/blog",
-      description: "Latest insights and tech articles",
-    },
-    {
-      title: "Documentation",
-      href: "/docs",
-      description: "Technical guides and best practices",
-    },
-    {
-      title: "Developer Portal",
-      href: "/developers",
-      description: "Tools and resources for developers",
-    },
-  ];
+  // Get navigation data from site config
+  const { main: mainNav } = siteConfig.navigation;
+  const servicesNav =
+    mainNav.find((item) => item.title === "Services")?.items || [];
+  const industriesNav =
+    mainNav.find((item) => item.title === "Industries")?.items || [];
+  const resourcesNav =
+    mainNav.find((item) => item.title === "Resources")?.items || [];
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center">
@@ -81,55 +34,41 @@ const Header = () => {
           <div className="flex items-center space-x-2">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-lg">
-                L
+                S
               </span>
             </div>
-            <span className="text-xl font-bold tracking-tight">Lattice</span>
+            <span className="text-xl font-bold tracking-tight">
+              {siteConfig.name}
+            </span>
           </div>
 
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
-              {/* Product */}
+              {/* Services */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Product</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground">
+                  Services
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] justify-start text-start">
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
                         <a
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/product"
+                          href="/services"
                         >
                           <div className="mb-2 mt-4 text-lg font-medium">
-                            Lattice Platform
+                            Full-Stack Solutions
                           </div>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            Complete development platform with project
-                            management, CI/CD, and analytics.
+                            Complete software development services from design
+                            to deployment.
                           </p>
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/product/features" title="Features">
-                      Project management, code repository, and CI/CD pipeline.
-                    </ListItem>
-                    <ListItem href="/product/changelog" title="Changelog">
-                      Latest platform updates and feature releases.
-                    </ListItem>
-                    <ListItem href="/product/roadmap" title="Roadmap">
-                      See what we're building next for the platform.
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              {/* Services */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Services</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] justify-start text-start">
-                    {services.map((service) => (
+                    {servicesNav.slice(0, 3).map((service) => (
                       <ListItem
                         key={service.title}
                         title={service.title}
@@ -142,12 +81,34 @@ const Header = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* Resources */}
+              {/* Industries */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
+                <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground">
+                  Industries
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] justify-start text-start">
-                    {resources.map((resource) => (
+                    {industriesNav.map((industry) => (
+                      <ListItem
+                        key={industry.title}
+                        title={industry.title}
+                        href={industry.href}
+                      >
+                        {industry.description}
+                      </ListItem>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Resources */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground">
+                  Resources
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] justify-start text-start">
+                    {resourcesNav.map((resource) => (
                       <ListItem
                         key={resource.title}
                         title={resource.title}
@@ -164,15 +125,16 @@ const Header = () => {
               <NavigationMenuItem>
                 <NavigationMenuLink
                   asChild
-                  className={navigationMenuTriggerStyle()}
+                  className="inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 >
                   <a href="/about">About</a>
                 </NavigationMenuLink>
               </NavigationMenuItem>
+
               <NavigationMenuItem>
                 <NavigationMenuLink
                   asChild
-                  className={navigationMenuTriggerStyle()}
+                  className="inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 >
                   <a href="/pricing">Pricing</a>
                 </NavigationMenuLink>
@@ -218,25 +180,36 @@ const Header = () => {
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur">
           <div className="container px-4 py-4 space-y-3">
             <a
-              href="/product"
+              href="/services"
               className="block text-sm font-medium hover:text-primary transition-colors"
             >
-              Product
+              Services
             </a>
             <div className="pl-4 space-y-2">
-              <a
-                href="/services"
-                className="block text-sm font-medium hover:text-primary transition-colors"
-              >
-                Services
-              </a>
-              {services.slice(0, 3).map((service) => (
+              {servicesNav.slice(0, 3).map((service) => (
                 <a
                   key={service.title}
                   href={service.href}
                   className="block text-sm text-muted-foreground hover:text-foreground transition-colors pl-2"
                 >
                   {service.title}
+                </a>
+              ))}
+            </div>
+            <a
+              href="/industries"
+              className="block text-sm font-medium hover:text-primary transition-colors"
+            >
+              Industries
+            </a>
+            <div className="pl-4 space-y-2">
+              {industriesNav.slice(0, 3).map((industry) => (
+                <a
+                  key={industry.title}
+                  href={industry.href}
+                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors pl-2"
+                >
+                  {industry.title}
                 </a>
               ))}
             </div>
@@ -253,10 +226,10 @@ const Header = () => {
               About
             </a>
             <a
-              href="/pricing"
+              href="/quote"
               className="block text-sm font-medium hover:text-primary transition-colors"
             >
-              Pricing
+              Get Quote
             </a>
             <div className="pt-4 border-t border-border space-y-3">
               <Button

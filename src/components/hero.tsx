@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, MessageSquare } from "lucide-react";
+import { siteConfig } from "@/config";
 
 const Hero = () => {
   return (
@@ -7,45 +8,46 @@ const Hero = () => {
       <div className="text-center space-y-8">
         {/* Badge */}
         <div className="inline-flex items-center rounded-full border border-border bg-muted px-3 py-1 text-sm">
-          <span className="mr-2">🚀</span>
-          New: Lattice v2.0 is now available
+          <span className="mr-2">{siteConfig.announcement.icon}</span>
+          {siteConfig.announcement.text}
         </div>
 
         {/* Headline */}
         <div className="space-y-4">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Ship code faster
+            We build complex
             <br />
-            with confidence
+            software AI cannot
+            <br />
+            comprehend
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            The modern development platform that brings together code review,
-            CI/CD, and monitoring in one seamless workflow.
+            {siteConfig.description}
           </p>
         </div>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button size="lg" className="text-base px-8">
-            Start free trial
+            Get Quote
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
           <Button variant="outline" size="lg" className="text-base px-8">
-            <Play className="mr-2 h-4 w-4" />
-            Watch demo
+            <MessageSquare className="mr-2 h-4 w-4" />
+            Contact Us
           </Button>
         </div>
 
         {/* Social Proof */}
         <div className="pt-12">
           <p className="text-sm text-muted-foreground mb-6">
-            Trusted by teams at
+            Serving enterprises, SMBs, and startups across Western Visayas and the Philippines
           </p>
           <div className="flex items-center justify-center space-x-8 opacity-60">
-            {["Vercel", "Linear", "Figma", "Stripe", "GitHub"].map(
-              (company) => (
-                <div key={company} className="text-lg font-semibold">
-                  {company}
+            {["Enterprise", "Healthcare", "Fintech", "Startups", "SMBs"].map(
+              (industry) => (
+                <div key={industry} className="text-lg font-semibold">
+                  {industry}
                 </div>
               )
             )}

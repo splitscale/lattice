@@ -1,6 +1,10 @@
-# React + TypeScript + Vite
+# Splitscale Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Full-stack partner for enterprises, SMBs, and startups
+
+## About Splitscale
+
+Splitscale is disciplined in both software and hardware. We see ourselves as the best, bright culture, transparent, and most effective company at this craft. Dominating Western Visayas and the whole Philippines, solving problems others cannot.
 
 Currently, two official plugins are available:
 
