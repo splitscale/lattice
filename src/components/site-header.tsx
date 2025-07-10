@@ -56,12 +56,15 @@ const Header = () => {
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-4">
         <div className="flex items-center space-x-8 w-full">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <a
+            href="/"
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+          >
             <img src={logoSvg} alt={siteConfig.name} className="h-8 w-8" />
             <span className="text-lg font-bold tracking-tight font-glancyr">
               {siteConfig.name.toUpperCase()}
             </span>
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden lg:flex">

@@ -48,12 +48,12 @@ const Footer = () => {
           {/* Brand Column - Takes 3 columns on large screens for more space */}
           <div className="lg:col-span-3 space-y-4 text-left">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
+            <a href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
               <img src={logoSvg} alt={siteConfig.name} className="h-8 w-8" />
               <span className="text-lg font-bold tracking-tight font-glancyr">
                 {siteConfig.name.toUpperCase()}
               </span>
-            </div>
+            </a>
 
             <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
               {siteConfig.company.tagline}
@@ -101,7 +101,7 @@ const Footer = () => {
                       {section.title}
                     </AccordionTrigger>
                     <AccordionContent>
-                      <div className="space-y-3 pb-4">
+                      <div className="space-y-3 pb-4 px-4">
                         {section.links.map((link) => (
                           <a
                             key={link.name}
