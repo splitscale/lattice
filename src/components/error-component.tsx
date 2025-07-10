@@ -52,8 +52,8 @@ function ErrorComponent({
 
   const getErrorCodeColor = (code: string | number) => {
     const codeStr = String(code);
-    if (codeStr.startsWith("4")) return "text-amber-500";
-    if (codeStr.startsWith("5")) return "text-red-500";
+    if (codeStr.startsWith("4")) return "text-yellow-600 dark:text-yellow-400";
+    if (codeStr.startsWith("5")) return "text-red-600 dark:text-red-400";
     return "text-primary";
   };
 

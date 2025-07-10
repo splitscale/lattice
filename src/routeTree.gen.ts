@@ -12,9 +12,21 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
 
+const ThrowErrorLazyRouteImport = createFileRoute('/throw-error')()
+const TestErrorsLazyRouteImport = createFileRoute('/test-errors')()
 const AboutLazyRouteImport = createFileRoute('/about')()
 const IndexLazyRouteImport = createFileRoute('/')()
 
+const ThrowErrorLazyRoute = ThrowErrorLazyRouteImport.update({
+  id: '/throw-error',
+  path: '/throw-error',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/throw-error.lazy').then((d) => d.Route))
+const TestErrorsLazyRoute = TestErrorsLazyRouteImport.update({
+  id: '/test-errors',
+  path: '/test-errors',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/test-errors.lazy').then((d) => d.Route))
 const AboutLazyRoute = AboutLazyRouteImport.update({
   id: '/about',
   path: '/about',
@@ -29,31 +41,53 @@ const IndexLazyRoute = IndexLazyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/test-errors': typeof TestErrorsLazyRoute
+  '/throw-error': typeof ThrowErrorLazyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/test-errors': typeof TestErrorsLazyRoute
+  '/throw-error': typeof ThrowErrorLazyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/test-errors': typeof TestErrorsLazyRoute
+  '/throw-error': typeof ThrowErrorLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/about' | '/test-errors' | '/throw-error'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/about' | '/test-errors' | '/throw-error'
+  id: '__root__' | '/' | '/about' | '/test-errors' | '/throw-error'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AboutLazyRoute: typeof AboutLazyRoute
+  TestErrorsLazyRoute: typeof TestErrorsLazyRoute
+  ThrowErrorLazyRoute: typeof ThrowErrorLazyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/throw-error': {
+      id: '/throw-error'
+      path: '/throw-error'
+      fullPath: '/throw-error'
+      preLoaderRoute: typeof ThrowErrorLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/test-errors': {
+      id: '/test-errors'
+      path: '/test-errors'
+      fullPath: '/test-errors'
+      preLoaderRoute: typeof TestErrorsLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -74,6 +108,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AboutLazyRoute: AboutLazyRoute,
+  TestErrorsLazyRoute: TestErrorsLazyRoute,
+  ThrowErrorLazyRoute: ThrowErrorLazyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
