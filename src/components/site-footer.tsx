@@ -1,4 +1,11 @@
 import { siteConfig } from "@/config";
+import logoSvg from "/logo.svg";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 // Simple Icons SVG components (following the recommendation from https://simpleicons.org)
 const TwitterIcon = () => (
@@ -40,46 +47,81 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-8 gap-8">
           {/* Brand Column - Takes 3 columns on large screens for more space */}
           <div className="lg:col-span-3 space-y-4 text-left">
+            {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">
-                  S
-                </span>
-              </div>
-              <span className="text-xl font-bold">{siteConfig.name}</span>
+              <img src={logoSvg} alt={siteConfig.name} className="h-8 w-8" />
+              <span className="text-lg font-bold tracking-tight font-glancyr">
+                {siteConfig.name.toUpperCase()}
+              </span>
             </div>
+
             <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
               {siteConfig.company.tagline}
             </p>
           </div>
 
-          {/* Empty column for spacing */}
+          {/* Empty column for spacing on desktop */}
           <div className="hidden lg:block lg:col-span-1"></div>
 
-          {/* Links Columns - Each takes 1 column, positioned more to the right */}
-          {footerSections.map((section) => (
-            <div key={section.title} className="space-y-4 text-left">
-              <h4 className="text-sm font-semibold text-foreground">
-                {section.title}
-              </h4>
-              <ul className="space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          {/* Links Columns - Desktop: Normal layout, Mobile: Accordion */}
+          <div className="lg:col-span-4 lg:grid lg:grid-cols-4 lg:gap-8">
+            {/* Desktop Links - Hidden on mobile */}
+            <div className="hidden lg:contents">
+              {footerSections.map((section) => (
+                <div key={section.title} className="space-y-4 text-left">
+                  <h4 className="text-sm font-semibold text-foreground">
+                    {section.title}
+                  </h4>
+                  <ul className="space-y-3">
+                    {section.links.map((link) => (
+                      <li key={link.name}>
+                        <a
+                          href={link.href}
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          {link.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-          ))}
+
+            {/* Mobile Accordion - Hidden on desktop */}
+            <div className="lg:hidden">
+              <Accordion type="multiple" className="w-full space-y-0">
+                {footerSections.map((section) => (
+                  <AccordionItem
+                    key={section.title}
+                    value={section.title.toLowerCase()}
+                    className="border-0"
+                  >
+                    <AccordionTrigger className="py-4 text-sm font-semibold hover:no-underline hover:text-primary text-start">
+                      {section.title}
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <div className="space-y-3 pb-4">
+                        {section.links.map((link) => (
+                          <a
+                            key={link.name}
+                            href={link.href}
+                            className="block text-sm text-muted-foreground hover:text-foreground transition-colors py-1"
+                          >
+                            {link.name}
+                          </a>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
         </div>
 
         {/* Bottom section with copyright and social links */}
-        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div className="mt-16 pt-8 border-t border-border flex flex-row justify-between items-start md:items-center gap-4">
           <div className="flex items-center space-x-4">
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} {siteConfig.name}
