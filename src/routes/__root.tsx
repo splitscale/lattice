@@ -11,16 +11,20 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 export const Route = createRootRoute({
   component: () => (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="flex min-h-screen min-w-screen flex-col bg-background text-foreground max-w-screen-xl mx-auto text-center">
-        <SiteHeader />
+      <div className="flex min-h-screen w-full flex-col bg-background text-foreground overflow-x-hidden">
+        <div className="w-full max-w-screen-xl mx-auto">
+          <SiteHeader />
 
-        {/* The Outlet component is used to render the next potentially matching child route.
-        <Outlet /> doesn't take any props and can be rendered anywhere within a route's component tree.
-        If there is no matching child route, <Outlet /> will render null. */}
+          {/* The Outlet component is used to render the next potentially matching child route.
+          <Outlet /> doesn't take any props and can be rendered anywhere within a route's component tree.
+          If there is no matching child route, <Outlet /> will render null. */}
 
-        <Outlet />
+          <main className="flex-1 w-full">
+            <Outlet />
+          </main>
 
-        <SiteFooter />
+          <SiteFooter />
+        </div>
         <TanStackRouterDevtools />
       </div>
     </ThemeProvider>

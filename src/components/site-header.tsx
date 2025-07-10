@@ -10,6 +10,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { ModeToggle } from "@/components/mode-toggle";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config";
@@ -29,7 +35,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center border-b border-border">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between ">
+      <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-4">
         <div className="flex items-center space-x-8 w-full">
           {/* Logo */}
           <div className="flex items-center space-x-2">
@@ -40,7 +46,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden md:flex">
+          <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
               {/* Services */}
               <NavigationMenuItem>
@@ -127,21 +133,12 @@ const Header = () => {
                   <a href="/about">About</a>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  asChild
-                  className="inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                >
-                  <a href="/pricing">Pricing</a>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
 
         {/* Desktop CTA Buttons */}
-        <div className="hidden md:flex items-center space-x-3">
+        <div className="hidden lg:flex items-center space-x-3">
           <ModeToggle />
           <Button
             variant="secondary"
@@ -156,7 +153,7 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex items-center space-x-2 md:hidden">
+        <div className="flex items-center space-x-2 lg:hidden">
           <ModeToggle />
           <Button
             variant="ghost"
@@ -174,74 +171,100 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur">
-          <div className="container px-4 py-4 space-y-3">
-            <a
-              href="/services"
-              className="block text-sm font-medium hover:text-primary transition-colors"
-            >
-              Services
-            </a>
-            <div className="pl-4 space-y-2">
-              {servicesNav.slice(0, 3).map((service) => (
+        <div className="fixed inset-x-0 top-16 z-40 lg:hidden bg-background border-t border-border">
+          <div className="h-[calc(100dvh-4rem)] flex flex-col">
+            {/* Navigation Content */}
+            <div className="flex-1 overflow-y-auto px-4 py-6 pb-[env(safe-area-inset-bottom)]">
+              <Accordion type="single" collapsible className="w-full space-y-0">
+                {/* Services */}
+                <AccordionItem value="services" className="border-0">
+                  <AccordionTrigger className="py-4 text-base font-medium hover:no-underline hover:text-primary text-start">
+                    Services
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="space-y-1 pl-4 pb-2">
+                      {servicesNav.map((service) => (
+                        <a
+                          key={service.title}
+                          href={service.href}
+                          className="block text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                        >
+                          {service.title}
+                        </a>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* Industries */}
+                <AccordionItem value="industries" className="border-0">
+                  <AccordionTrigger className="py-4 text-base font-medium hover:no-underline hover:text-primary text-start">
+                    Industries
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="space-y-1 pl-4 pb-2">
+                      {industriesNav.map((industry) => (
+                        <a
+                          key={industry.title}
+                          href={industry.href}
+                          className="block text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                        >
+                          {industry.title}
+                        </a>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+
+                {/* Resources */}
+                <AccordionItem value="resources" className="border-0">
+                  <AccordionTrigger className="py-4 text-base font-medium hover:no-underline hover:text-primary text-start">
+                    Resources
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="space-y-1 pl-4 pb-2">
+                      {resourcesNav.map((resource) => (
+                        <a
+                          key={resource.title}
+                          href={resource.href}
+                          className="block text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
+                        >
+                          {resource.title}
+                        </a>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+
+              {/* Simple Links */}
+              <div className="space-y-0">
                 <a
-                  key={service.title}
-                  href={service.href}
-                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors pl-2"
+                  href="/about"
+                  className="block py-4 text-base font-medium hover:text-primary transition-colors text-start"
                 >
-                  {service.title}
+                  About
                 </a>
-              ))}
+              </div>
             </div>
-            <a
-              href="/industries"
-              className="block text-sm font-medium hover:text-primary transition-colors"
-            >
-              Industries
-            </a>
-            <div className="pl-4 space-y-2">
-              {industriesNav.slice(0, 3).map((industry) => (
-                <a
-                  key={industry.title}
-                  href={industry.href}
-                  className="block text-sm text-muted-foreground hover:text-foreground transition-colors pl-2"
+
+            {/* CTA Buttons - Fixed at bottom with safe area */}
+            <div className="px-4 py-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] border-t border-border/30 bg-background">
+              <div className="flex gap-3">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="flex-1 justify-center text-foreground border-border/50 hover:bg-accent/50"
                 >
-                  {industry.title}
-                </a>
-              ))}
-            </div>
-            <a
-              href="/resources"
-              className="block text-sm font-medium hover:text-primary transition-colors"
-            >
-              Resources
-            </a>
-            <a
-              href="/about"
-              className="block text-sm font-medium hover:text-primary transition-colors"
-            >
-              About
-            </a>
-            <a
-              href="/quote"
-              className="block text-sm font-medium hover:text-primary transition-colors"
-            >
-              Get Quote
-            </a>
-            <div className="pt-4 border-t border-border space-y-3">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="w-full justify-start text-muted-foreground hover:text-foreground"
-              >
-                Client Portal
-              </Button>
-              <Button
-                size="sm"
-                className="w-full bg-primary hover:bg-primary/90"
-              >
-                Get Quote
-              </Button>
+                  Sign in
+                </Button>
+                <Button
+                  size="lg"
+                  className="flex-1 justify-center bg-primary hover:bg-primary/90 font-medium"
+                >
+                  Let's discover
+                </Button>
+              </div>
             </div>
           </div>
         </div>
