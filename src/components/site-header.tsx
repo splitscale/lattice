@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import logoSvg from "/logo.svg";
@@ -23,6 +23,24 @@ import * as React from "react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Disable page scrolling when mobile menu is open, but allow internal menu scrolling
+  useEffect(() => {
+    if (isMenuOpen) {
+      // Prevent page scroll but preserve menu internal scroll
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   // Get navigation data from site config
   const { main: mainNav } = siteConfig.navigation;
@@ -174,7 +192,7 @@ const Header = () => {
         <div className="fixed inset-x-0 top-16 z-40 lg:hidden bg-background border-t border-border">
           <div className="h-[calc(100dvh-4rem)] flex flex-col">
             {/* Navigation Content */}
-            <div className="flex-1 overflow-y-auto px-4 py-6 pb-[env(safe-area-inset-bottom)]">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden px-4 py-6 pb-[env(safe-area-inset-bottom)]">
               <Accordion type="single" collapsible className="w-full space-y-0">
                 {/* Services */}
                 <AccordionItem value="services" className="border-0">
