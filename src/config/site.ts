@@ -1,3 +1,11 @@
+import team from "@/assets/icons/users.svg";
+import verified from "@/assets/icons/verified.svg";
+import handshake from "@/assets/icons/handshake.svg";
+
+import bteam from "@/assets/icons/users-dark.svg";
+import bverified from "@/assets/icons/verified-dark.svg";
+import bhandshake from "@/assets/icons/handshake-dark.svg";
+
 export const siteConfig = {
   name: "Splitscale",
   description:
@@ -136,6 +144,49 @@ export const siteConfig = {
     text: "New: Now serving clients across the Philippines",
     href: "/blog/philippines-expansion",
     icon: "🇵🇭",
+  },
+  home: {
+    carousel: [
+      { text: "Lorem Ipsum", color: "" },
+      { text: "●", color: "" },
+      { text: "Lorem Ipsum", color: "text-[#FF6E00]" },
+      { text: "●", color: "" },
+      { text: "Lorem Ipsum", color: "" },
+      { text: "●", color: "" },
+      { text: "Lorem Ipsum", color: "text-[#FF6E00]" },
+      { text: "●", color: "" },
+    ],
+    choose: [
+      {
+        icon: {
+          light: bteam,
+          dark: team,
+        },
+        alt: "team",
+        title: "Expert Team",
+        description:
+          "Seasoned professionals deliver innovative solutions with precision.",
+      },
+      {
+        icon: {
+          light: bverified,
+          dark: verified,
+        },
+        alt: "verified",
+        title: "Quality Assured",
+        description:
+          "Highest craftsmanship standards ensure exceptional results.",
+      },
+      {
+        icon: {
+          light: bhandshake,
+          dark: handshake,
+        },
+        alt: "handshake",
+        title: "Verified Results",
+        description: "Proven track record with data-driven success.",
+      },
+    ],
   },
 } as const;
 
