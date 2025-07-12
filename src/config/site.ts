@@ -78,111 +78,20 @@ export const siteConfig = {
   navigation: {
     main: [
       {
-        title: "Services",
-        href: "/services",
-        items: [
-          {
-            title: "UI/UX Design & Prototyping",
-            href: "/services/ui-ux-design",
-            description: "Human-centered design services for web and mobile",
-          },
-          {
-            title: "B2B Software Development",
-            href: "/services/b2b-software",
-            description: "Enterprise systems and workflow solutions",
-          },
-          {
-            title: "B2C Software Development",
-            href: "/services/b2c-software",
-            description: "Consumer-facing web and mobile applications",
-          },
-          {
-            title: "Automation & RPA",
-            href: "/services/automation",
-            description: "Process automation and efficiency solutions",
-          },
-          {
-            title: "AI & ML Integration",
-            href: "/services/ai-integration",
-            description: "Predictive analytics and intelligent systems",
-          },
-          {
-            title: "Quality Assurance",
-            href: "/services/quality-assurance",
-            description: "Comprehensive testing and QA services",
-          },
-        ],
+        title: "Home",
+        href: "/home",
       },
       {
-        title: "Industries",
-        href: "/industries",
-        items: [
-          {
-            title: "Enterprise",
-            href: "/industries/enterprise",
-            description:
-              "Scale with confidence using enterprise-grade solutions",
-          },
-          {
-            title: "SMBs",
-            href: "/industries/smb",
-            description: "Efficient solutions for small and medium businesses",
-          },
-          {
-            title: "Startups",
-            href: "/industries/startups",
-            description: "Move fast with startup-friendly development",
-          },
-          {
-            title: "Healthcare",
-            href: "/industries/healthcare",
-            description: "Compliant and secure healthcare solutions",
-          },
-          {
-            title: "Fintech",
-            href: "/industries/fintech",
-            description: "Secure financial technology solutions",
-          },
-        ],
+        title: "Projects",
+        href: "/projects",
       },
       {
-        title: "Resources",
-        href: "/resources",
-        items: [
-          {
-            title: "Portfolio",
-            href: "/portfolio",
-            description: "Our latest projects and case studies",
-          },
-          {
-            title: "Blog",
-            href: "/blog",
-            description: "Latest insights and tech articles",
-          },
-          {
-            title: "Case Studies",
-            href: "/case-studies",
-            description: "Success stories from our clients",
-          },
-          {
-            title: "Community",
-            href: "/community",
-            description: "Join our developer community",
-          },
-          {
-            title: "Support",
-            href: "/support",
-            description: "Get help when you need it",
-          },
-        ],
+        title: "About Us",
+        href: "/about-us",
       },
       {
-        title: "Get Quote",
-        href: "/quote",
-      },
-      {
-        title: "About",
-        href: "/about",
+        title: "Contact Us",
+        href: "/contact-us",
       },
     ],
     footer: {
@@ -231,3 +140,32 @@ export const siteConfig = {
 } as const;
 
 export type SiteConfig = typeof siteConfig;
+
+// items: [
+//       {
+//         title: "Enterprise",
+//         href: "/industries/enterprise",
+//         description:
+//           "Scale with confidence using enterprise-grade solutions",
+//       },
+//       {
+//         title: "SMBs",
+//         href: "/industries/smb",
+//         description: "Efficient solutions for small and medium businesses",
+//       },
+//       {
+//         title: "Startups",
+//         href: "/industries/startups",
+//         description: "Move fast with startup-friendly development",
+//       },
+//       {
+//         title: "Healthcare",
+//         href: "/industries/healthcare",
+//         description: "Compliant and secure healthcare solutions",
+//       },
+//       {
+//         title: "Fintech",
+//         href: "/industries/fintech",
+//         description: "Secure financial technology solutions",
+//       },
+//     ],
