@@ -11,7 +11,6 @@ const Home: React.FC = () => {
       <h1 className="text-[min(14.5vw,10rem)] md:text-[min(15.5vw,10rem)] lg:text-[min(15.5vw,14rem)] font-bold font-glancyr leading-none">
         INNOVATIVE SOLUTIONS
       </h1>
-
       {/* Carousel */}
       <div className="overflow-hidden">
         <div className="flex animate-infinite-scroll ">
@@ -31,11 +30,10 @@ const Home: React.FC = () => {
           ))}
         </div>
       </div>
-
       {/* Why Choose Us? */}
-      <section className="py-[15%]">
+      <section className="py-[10%]">
         <div className="mb-10">
-          <h1 className="text-[min(10vw,2rem)]  md:text-[min(15.5vw,3rem)] lg:text-[min(12.5vw,4rem)] font-bold">
+          <h1 className="text-[min(10vw,2rem)] md:text-[min(15.5vw,3rem)] lg:text-[min(12.5vw,4rem)] font-bold">
             Why Choose Us?
           </h1>
         </div>
@@ -56,6 +54,37 @@ const Home: React.FC = () => {
           ))}
         </div>
       </section>
+      {/* Our Services */}
+      <section className="pb-[15%]">
+        <div className="mb-10">
+          <h1 className="text-[min(10vw,2rem)] md:text-[min(15.5vw,3rem)] lg:text-[min(12.5vw,4rem)] font-bold">
+            Our Services
+          </h1>
+        </div>
+        <div className="flex flex-col justify-between items-center gap-8">
+          {[
+            siteConfig.home.services.slice(0, 2),
+            siteConfig.home.services.slice(2, 4),
+          ].map((servicePair, index) => (
+            <div key={index} className="w-full flex flex-col lg:flex-row gap-8">
+              {servicePair.map((service) => (
+                <div
+                  key={service.id}
+                  className={`md:${service.width} bg-card p-8 rounded-xl`}
+                >
+                  <div className="bg-[#FF6E00] w-max py-3 px-6 rounded-lg">
+                    <strong>{service.id}</strong>
+                  </div>
+                  <h1 className="text-[min(10vw,2.5rem)] font-bold py-3">
+                    {service.title}
+                  </h1>
+                  <p className="text-[1.2rem]">{service.description}</p>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>{" "}
     </div>
   );
 };

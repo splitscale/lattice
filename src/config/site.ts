@@ -83,8 +83,45 @@ export const siteConfig = {
       href: "/services/quality-assurance",
     },
   },
+
   navigation: {
     main: [
+      {
+        title: "Services",
+        href: "/services",
+        items: [
+          {
+            title: "UI/UX Design & Prototyping",
+            href: "/services/ui-ux-design",
+            description: "Human-centered design services for web and mobile",
+          },
+          {
+            title: "B2B Software Development",
+            href: "/services/b2b-software",
+            description: "Enterprise systems and workflow solutions",
+          },
+          {
+            title: "B2C Software Development",
+            href: "/services/b2c-software",
+            description: "Consumer-facing web and mobile applications",
+          },
+          {
+            title: "Automation & RPA",
+            href: "/services/automation",
+            description: "Process automation and efficiency solutions",
+          },
+          {
+            title: "AI & ML Integration",
+            href: "/services/ai-integration",
+            description: "Predictive analytics and intelligent systems",
+          },
+          {
+            title: "Quality Assurance",
+            href: "/services/quality-assurance",
+            description: "Comprehensive testing and QA services",
+          },
+        ],
+      },
       {
         title: "Home",
         href: "/home",
@@ -147,14 +184,44 @@ export const siteConfig = {
   },
   home: {
     carousel: [
-      { text: "Lorem Ipsum", color: "" },
+      { text: "Scalable Technology", color: "" },
       { text: "●", color: "" },
-      { text: "Lorem Ipsum", color: "text-[#FF6E00]" },
+      { text: "Driving Innovation", color: "text-[#FF6E00]" },
       { text: "●", color: "" },
-      { text: "Lorem Ipsum", color: "" },
+      { text: "Tech Startups", color: "" },
       { text: "●", color: "" },
-      { text: "Lorem Ipsum", color: "text-[#FF6E00]" },
+      { text: "Empowering Industries", color: "text-[#FF6E00]" },
       { text: "●", color: "" },
+    ],
+    services: [
+      {
+        id: "01",
+        title: "Web Applications",
+        description:
+          "Responsive, scalable websites built with modern technologies for optimal performance and user experience.",
+        width: "w-[65%]",
+      },
+      {
+        id: "02",
+        title: "UI/UX Design",
+        description:
+          "Visually appealing, user-friendly interfaces enhancing engagement.",
+        width: "w-[35%]",
+      },
+      {
+        id: "03",
+        title: "Maintenance",
+        description:
+          "Ongoing support ensuring safe, functional digital solutions.",
+        width: "w-[35%]",
+      },
+      {
+        id: "04",
+        title: "Mobile Applications",
+        description:
+          "Intuitive iOS and Android apps designed for seamless functionality and brand alignment.",
+        width: "w-[65%]",
+      },
     ],
     choose: [
       {
