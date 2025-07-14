@@ -1,3 +1,11 @@
+import team from "@/assets/icons/users.svg";
+import verified from "@/assets/icons/verified.svg";
+import handshake from "@/assets/icons/handshake.svg";
+
+import bteam from "@/assets/icons/users-dark.svg";
+import bverified from "@/assets/icons/verified-dark.svg";
+import bhandshake from "@/assets/icons/handshake-dark.svg";
+
 export const siteConfig = {
   name: "Splitscale",
   description:
@@ -75,6 +83,7 @@ export const siteConfig = {
       href: "/services/quality-assurance",
     },
   },
+
   navigation: {
     main: [
       {
@@ -114,75 +123,20 @@ export const siteConfig = {
         ],
       },
       {
-        title: "Industries",
-        href: "/industries",
-        items: [
-          {
-            title: "Enterprise",
-            href: "/industries/enterprise",
-            description:
-              "Scale with confidence using enterprise-grade solutions",
-          },
-          {
-            title: "SMBs",
-            href: "/industries/smb",
-            description: "Efficient solutions for small and medium businesses",
-          },
-          {
-            title: "Startups",
-            href: "/industries/startups",
-            description: "Move fast with startup-friendly development",
-          },
-          {
-            title: "Healthcare",
-            href: "/industries/healthcare",
-            description: "Compliant and secure healthcare solutions",
-          },
-          {
-            title: "Fintech",
-            href: "/industries/fintech",
-            description: "Secure financial technology solutions",
-          },
-        ],
+        title: "Home",
+        href: "/home",
       },
       {
-        title: "Resources",
-        href: "/resources",
-        items: [
-          {
-            title: "Portfolio",
-            href: "/portfolio",
-            description: "Our latest projects and case studies",
-          },
-          {
-            title: "Blog",
-            href: "/blog",
-            description: "Latest insights and tech articles",
-          },
-          {
-            title: "Case Studies",
-            href: "/case-studies",
-            description: "Success stories from our clients",
-          },
-          {
-            title: "Community",
-            href: "/community",
-            description: "Join our developer community",
-          },
-          {
-            title: "Support",
-            href: "/support",
-            description: "Get help when you need it",
-          },
-        ],
+        title: "Projects",
+        href: "/projects",
       },
       {
-        title: "Get Quote",
-        href: "/quote",
+        title: "About Us",
+        href: "/about-us",
       },
       {
-        title: "About",
-        href: "/about",
+        title: "Contact Us",
+        href: "/contact-us",
       },
     ],
     footer: {
@@ -228,6 +182,108 @@ export const siteConfig = {
     href: "/blog/philippines-expansion",
     icon: "🇵🇭",
   },
+  home: {
+    carousel: [
+      { text: "Scalable Technology", color: "" },
+      { text: "●", color: "" },
+      { text: "Driving Innovation", color: "text-[#FF6E00]" },
+      { text: "●", color: "" },
+      { text: "Tech Startups", color: "" },
+      { text: "●", color: "" },
+      { text: "Empowering Industries", color: "text-[#FF6E00]" },
+      { text: "●", color: "" },
+    ],
+    services: [
+      {
+        id: "01",
+        title: "Web Applications",
+        description:
+          "Responsive, scalable websites built with modern technologies for optimal performance and user experience.",
+        width: "w-[65%]",
+      },
+      {
+        id: "02",
+        title: "UI/UX Design",
+        description:
+          "Visually appealing, user-friendly interfaces enhancing engagement.",
+        width: "w-[35%]",
+      },
+      {
+        id: "03",
+        title: "Maintenance",
+        description:
+          "Ongoing support ensuring safe, functional digital solutions.",
+        width: "w-[35%]",
+      },
+      {
+        id: "04",
+        title: "Mobile Applications",
+        description:
+          "Intuitive iOS and Android apps designed for seamless functionality and brand alignment.",
+        width: "w-[65%]",
+      },
+    ],
+    choose: [
+      {
+        icon: {
+          light: bteam,
+          dark: team,
+        },
+        alt: "team",
+        title: "Expert Team",
+        description:
+          "Seasoned professionals deliver innovative solutions with precision.",
+      },
+      {
+        icon: {
+          light: bverified,
+          dark: verified,
+        },
+        alt: "verified",
+        title: "Quality Assured",
+        description:
+          "Highest craftsmanship standards ensure exceptional results.",
+      },
+      {
+        icon: {
+          light: bhandshake,
+          dark: handshake,
+        },
+        alt: "handshake",
+        title: "Verified Results",
+        description: "Proven track record with data-driven success.",
+      },
+    ],
+  },
 } as const;
 
 export type SiteConfig = typeof siteConfig;
+
+// items: [
+//       {
+//         title: "Enterprise",
+//         href: "/industries/enterprise",
+//         description:
+//           "Scale with confidence using enterprise-grade solutions",
+//       },
+//       {
+//         title: "SMBs",
+//         href: "/industries/smb",
+//         description: "Efficient solutions for small and medium businesses",
+//       },
+//       {
+//         title: "Startups",
+//         href: "/industries/startups",
+//         description: "Move fast with startup-friendly development",
+//       },
+//       {
+//         title: "Healthcare",
+//         href: "/industries/healthcare",
+//         description: "Compliant and secure healthcare solutions",
+//       },
+//       {
+//         title: "Fintech",
+//         href: "/industries/fintech",
+//         description: "Secure financial technology solutions",
+//       },
+//     ],

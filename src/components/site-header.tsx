@@ -4,7 +4,6 @@ import { Menu, X } from "lucide-react";
 import logoSvg from "/logo.svg";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
@@ -12,7 +11,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
@@ -43,18 +41,18 @@ const Header = () => {
   }, [isMenuOpen]);
 
   // Get navigation data from site config
-  const { main: mainNav } = siteConfig.navigation;
-  const servicesNav =
-    mainNav.find((item) => item.title === "Services")?.items || [];
-  const industriesNav =
-    mainNav.find((item) => item.title === "Industries")?.items || [];
-  const resourcesNav =
-    mainNav.find((item) => item.title === "Resources")?.items || [];
+  // const { main: mainNav } = siteConfig.navigation;
+  // const servicesNav =
+  //   mainNav.find((item) => item.title === "Services")?.items || [];
+  // const industriesNav =
+  //   mainNav.find((item) => item.title === "Industries")?.items || [];
+  // const resourcesNav =
+  //   mainNav.find((item) => item.title === "Resources")?.items || [];
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center border-b border-border">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-4">
-        <div className="flex items-center space-x-8 w-full">
+        <div className="  flex items-center  ">
           {/* Logo */}
           <a
             href="/"
@@ -65,112 +63,43 @@ const Header = () => {
               {siteConfig.name.toUpperCase()}
             </span>
           </a>
-
-          {/* Desktop Navigation */}
-          <NavigationMenu className="hidden lg:flex">
-            <NavigationMenuList>
-              {/* Services */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground">
-                  Services
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] justify-start text-start">
-                    <li className="row-span-3">
-                      <NavigationMenuLink asChild>
-                        <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/services"
-                        >
-                          <div className="mb-2 mt-4 text-lg font-medium">
-                            Full-Stack Solutions
-                          </div>
-                          <p className="text-sm leading-tight text-muted-foreground">
-                            Complete software development services from design
-                            to deployment.
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    {servicesNav.slice(0, 3).map((service) => (
-                      <ListItem
-                        key={service.title}
-                        title={service.title}
-                        href={service.href}
-                      >
-                        {service.description}
-                      </ListItem>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              {/* Industries */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground">
-                  Industries
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] justify-start text-start">
-                    {industriesNav.map((industry) => (
-                      <ListItem
-                        key={industry.title}
-                        title={industry.title}
-                        href={industry.href}
-                      >
-                        {industry.description}
-                      </ListItem>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              {/* Resources */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground">
-                  Resources
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] justify-start text-start">
-                    {resourcesNav.map((resource) => (
-                      <ListItem
-                        key={resource.title}
-                        title={resource.title}
-                        href={resource.href}
-                      >
-                        {resource.description}
-                      </ListItem>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              {/* Simple Links */}
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  asChild
-                  className="inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                >
-                  <a href="/about">About</a>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
         </div>
+        {/* Desktop Navigation */}
+        <NavigationMenu className="hidden lg:flex w-full justify-center items-center">
+          <NavigationMenuList>
+            {/* Home */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground cursor-pointer">
+                Home
+              </NavigationMenuTrigger>
+            </NavigationMenuItem>
+
+            {/* Projects */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground cursor-pointer">
+                Projects
+              </NavigationMenuTrigger>
+            </NavigationMenuItem>
+
+            {/* About Us */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground cursor-pointer">
+                About Us
+              </NavigationMenuTrigger>
+            </NavigationMenuItem>
+
+            {/* Contact */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground cursor-pointer">
+                Contact Us
+              </NavigationMenuTrigger>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
 
         {/* Desktop CTA Buttons */}
         <div className="hidden lg:flex items-center space-x-3">
           <ModeToggle />
-          <Button
-            variant="secondary"
-            size="sm"
-            className="text-muted-foreground hover:text-foreground"
-          >
-            Dashboard
-          </Button>
-          <Button size="sm" className="bg-primary hover:bg-primary/90">
-            Get Quote
-          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -198,63 +127,31 @@ const Header = () => {
             <div className="flex-1 overflow-y-auto overflow-x-hidden px-4 py-6 pb-[env(safe-area-inset-bottom)]">
               <Accordion type="single" collapsible className="w-full space-y-0">
                 {/* Services */}
-                <AccordionItem value="services" className="border-0">
+                <AccordionItem value="home" className="border-0">
                   <AccordionTrigger className="py-4 text-base font-medium hover:no-underline hover:text-primary text-start">
-                    Services
+                    Home
                   </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="space-y-1 pl-4 pb-2">
-                      {servicesNav.map((service) => (
-                        <a
-                          key={service.title}
-                          href={service.href}
-                          className="block text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
-                        >
-                          {service.title}
-                        </a>
-                      ))}
-                    </div>
-                  </AccordionContent>
                 </AccordionItem>
 
-                {/* Industries */}
-                <AccordionItem value="industries" className="border-0">
+                {/* Projects */}
+                <AccordionItem value="projects" className="border-0">
                   <AccordionTrigger className="py-4 text-base font-medium hover:no-underline hover:text-primary text-start">
-                    Industries
+                    Projects
                   </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="space-y-1 pl-4 pb-2">
-                      {industriesNav.map((industry) => (
-                        <a
-                          key={industry.title}
-                          href={industry.href}
-                          className="block text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
-                        >
-                          {industry.title}
-                        </a>
-                      ))}
-                    </div>
-                  </AccordionContent>
                 </AccordionItem>
 
-                {/* Resources */}
-                <AccordionItem value="resources" className="border-0">
+                {/* About Us */}
+                <AccordionItem value="about" className="border-0">
                   <AccordionTrigger className="py-4 text-base font-medium hover:no-underline hover:text-primary text-start">
-                    Resources
+                    About Us
                   </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="space-y-1 pl-4 pb-2">
-                      {resourcesNav.map((resource) => (
-                        <a
-                          key={resource.title}
-                          href={resource.href}
-                          className="block text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
-                        >
-                          {resource.title}
-                        </a>
-                      ))}
-                    </div>
-                  </AccordionContent>
+                </AccordionItem>
+
+                {/* Contact Us*/}
+                <AccordionItem value="contact" className="border-0">
+                  <AccordionTrigger className="py-4 text-base font-medium hover:no-underline hover:text-primary text-start">
+                    Contact Us
+                  </AccordionTrigger>
                 </AccordionItem>
               </Accordion>
 

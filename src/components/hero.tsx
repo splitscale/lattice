@@ -41,7 +41,8 @@ const Hero = () => {
         {/* Social Proof */}
         <div className="pt-12">
           <p className="text-sm text-muted-foreground mb-6">
-            Serving enterprises, SMBs, and startups across Western Visayas and the Philippines
+            Serving enterprises, SMBs, and startups across Western Visayas and
+            the Philippines
           </p>
           <div className="flex items-center justify-center space-x-8 opacity-60">
             {["Enterprise", "Healthcare", "Fintech", "Startups", "SMBs"].map(

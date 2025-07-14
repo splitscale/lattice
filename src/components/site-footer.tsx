@@ -48,7 +48,10 @@ const Footer = () => {
           {/* Brand Column - Takes 3 columns on large screens for more space */}
           <div className="lg:col-span-3 space-y-4 text-left">
             {/* Logo */}
-            <a href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+            <a
+              href="/"
+              className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+            >
               <img src={logoSvg} alt={siteConfig.name} className="h-8 w-8" />
               <span className="text-lg font-bold tracking-tight font-glancyr">
                 {siteConfig.name.toUpperCase()}
