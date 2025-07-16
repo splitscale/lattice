@@ -1,5 +1,5 @@
 // import Hero from "@/components/hero";
-import Home from "@/components/pages/home";
+import Hero from "@/components/hero";
 import { createLazyFileRoute } from "@tanstack/react-router";
 
 export const Route = createLazyFileRoute("/")({
@@ -7,5 +7,5 @@ export const Route = createLazyFileRoute("/")({
 });
 
 function Index() {
-  return <Home />;
+  return Hero();
 }

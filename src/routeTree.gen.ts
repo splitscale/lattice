@@ -14,6 +14,7 @@ import { Route as rootRouteImport } from './routes/__root'
 
 const ThrowErrorLazyRouteImport = createFileRoute('/throw-error')()
 const TestErrorsLazyRouteImport = createFileRoute('/test-errors')()
+const ProjectsLazyRouteImport = createFileRoute('/projects')()
 const AboutLazyRouteImport = createFileRoute('/about')()
 const IndexLazyRouteImport = createFileRoute('/')()
 
@@ -27,6 +28,11 @@ const TestErrorsLazyRoute = TestErrorsLazyRouteImport.update({
   path: '/test-errors',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/test-errors.lazy').then((d) => d.Route))
+const ProjectsLazyRoute = ProjectsLazyRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/projects.lazy').then((d) => d.Route))
 const AboutLazyRoute = AboutLazyRouteImport.update({
   id: '/about',
   path: '/about',
@@ -41,12 +47,14 @@ const IndexLazyRoute = IndexLazyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/projects': typeof ProjectsLazyRoute
   '/test-errors': typeof TestErrorsLazyRoute
   '/throw-error': typeof ThrowErrorLazyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/projects': typeof ProjectsLazyRoute
   '/test-errors': typeof TestErrorsLazyRoute
   '/throw-error': typeof ThrowErrorLazyRoute
 }
@@ -54,20 +62,28 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexLazyRoute
   '/about': typeof AboutLazyRoute
+  '/projects': typeof ProjectsLazyRoute
   '/test-errors': typeof TestErrorsLazyRoute
   '/throw-error': typeof ThrowErrorLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/test-errors' | '/throw-error'
+  fullPaths: '/' | '/about' | '/projects' | '/test-errors' | '/throw-error'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/test-errors' | '/throw-error'
-  id: '__root__' | '/' | '/about' | '/test-errors' | '/throw-error'
+  to: '/' | '/about' | '/projects' | '/test-errors' | '/throw-error'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/projects'
+    | '/test-errors'
+    | '/throw-error'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   AboutLazyRoute: typeof AboutLazyRoute
+  ProjectsLazyRoute: typeof ProjectsLazyRoute
   TestErrorsLazyRoute: typeof TestErrorsLazyRoute
   ThrowErrorLazyRoute: typeof ThrowErrorLazyRoute
 }
@@ -86,6 +102,13 @@ declare module '@tanstack/react-router' {
       path: '/test-errors'
       fullPath: '/test-errors'
       preLoaderRoute: typeof TestErrorsLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -108,6 +131,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   AboutLazyRoute: AboutLazyRoute,
+  ProjectsLazyRoute: ProjectsLazyRoute,
   TestErrorsLazyRoute: TestErrorsLazyRoute,
   ThrowErrorLazyRoute: ThrowErrorLazyRoute,
 }
