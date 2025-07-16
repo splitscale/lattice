@@ -272,6 +272,28 @@ export const siteConfig = {
       },
     ],
   },
+  about: {
+    coreValues: [
+      {
+        number: "01",
+        title: "Excellence",
+        description:
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem, perspiciatis? Est, obcaecati ipsum error beatae ullam officiis in dolores aut eos incidunt dolorem, animi provident soluta facere non corrupti maiores?",
+      },
+      {
+        number: "02",
+        title: "Innovation",
+        description:
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem, perspiciatis? Est, obcaecati ipsum error beatae ullam officiis in dolores aut eos incidunt dolorem, animi provident soluta facere non corrupti maiores?",
+      },
+      {
+        number: "03",
+        title: "Integrity",
+        description:
+          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem, perspiciatis? Est, obcaecati ipsum error beatae ullam officiis in dolores aut eos incidunt dolorem, animi provident soluta facere non corrupti maiores?",
+      },
+    ],
+  },
 } as const;
 
 export type SiteConfig = typeof siteConfig;
