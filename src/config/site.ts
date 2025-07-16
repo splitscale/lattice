@@ -6,6 +6,9 @@ import bteam from "@/assets/icons/users-dark.svg";
 import bverified from "@/assets/icons/verified-dark.svg";
 import bhandshake from "@/assets/icons/handshake-dark.svg";
 
+import project1 from "@/assets/projects/our-project-1.webp";
+import project2 from "@/assets/projects/our-project-2.webp";
+
 export const siteConfig = {
   name: "Splitscale",
   description:
@@ -252,6 +255,20 @@ export const siteConfig = {
         alt: "handshake",
         title: "Verified Results",
         description: "Proven track record with data-driven success.",
+      },
+    ],
+    projects: [
+      {
+        imageSrc: project1,
+        title: "Cryptocurrency Broker",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      },
+      {
+        imageSrc: project2,
+        title: "Minimalist Real Estate Website",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       },
     ],
   },
