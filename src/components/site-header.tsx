@@ -84,14 +84,14 @@ const Header = () => {
             {/* About Us */}
             <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground cursor-pointer">
-                About Us
+                <a href="/about"> About Us </a>
               </NavigationMenuTrigger>
             </NavigationMenuItem>
 
             {/* Contact */}
             <NavigationMenuItem>
               <NavigationMenuTrigger className="bg-transparent hover:bg-accent hover:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground cursor-pointer">
-                Contact Us
+                <a href="/contact"> Contact Us </a>
               </NavigationMenuTrigger>
             </NavigationMenuItem>
           </NavigationMenuList>
