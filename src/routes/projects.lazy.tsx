@@ -7,9 +7,6 @@ import {
   Workflow,
 } from "lucide-react";
 
-import project1 from "@/assets/projects/our-project-1.webp";
-import project2 from "@/assets/projects/our-project-2.webp";
-
 export const Route = createLazyFileRoute("/projects")({
   component: Projects,
 });
@@ -36,18 +33,6 @@ const development = [
     title: "Delivery",
     description: "Deploy, Launch, Support",
     icon: <Workflow size={48} color="#ffffff" className="w-5 lg:w-8" />,
-  },
-];
-
-const projects = [
-  {
-    title: "Cryptocurrency Broker",
-    image: project1,
-  },
-
-  {
-    title: "Minimalist Real Estate Website",
-    image: project2,
   },
 ];
 
@@ -86,13 +71,13 @@ function Projects() {
         </div>
         <div className="w-full flex justify-center items-center">
           <div className="w-full flex flex-col gap-5 md:flex-row md:px-5 justify-between items-center">
-            {projects.map((proj, key) => (
+            {siteConfig.home.projects.map((proj, key) => (
               <div
                 key={key}
                 className="relative md:w-[48%] group overflow-hidden rounded-lg cursor-pointer"
               >
                 <img
-                  src={proj.image}
+                  src={proj.imageSrc}
                   alt={proj.title}
                   className="w-full h-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:opacity-40"
                 />
@@ -131,6 +116,7 @@ function Projects() {
                     {item.description}
                   </h1>
                   {item.icon}
+                  <Telescope size={48} color="#ffffff" className="w-5 lg:w-8" />
                 </div>
               </div>
             ))}
