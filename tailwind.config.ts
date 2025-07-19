@@ -5,12 +5,12 @@ const config: Config = {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    "./components/pages/**/*.{js,ts,jsx,tsx}", // Add for Home.tsx
+    "./components/pages/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        glancyr: ["var(--font-glancyr)", "sans-serif"], // Updated to use CSS variable
+        glancyr: ["var(--font-glancyr)", "sans-serif"],
       },
       animation: {
         "infinite-scroll": "infinite-scroll 15s linear infinite",
@@ -23,7 +23,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")], // Add for custom animations
+  plugins: [require("tailwindcss-animate")],
 };
 
 export default config;
